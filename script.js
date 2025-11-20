@@ -4,7 +4,7 @@ let newBtn = document.querySelector("#new-btn");
 let megContainer = document.querySelector(".msg-container");
 let msg = document.querySelector("#msg");
 
-let turnO = true; //playerX playerO
+let turnO = true;
 let count = 0;
 
 let winPatterns = [
@@ -27,13 +27,10 @@ const resetGame = () => {
 
 boxes.forEach((box) => {
   box.addEventListener("click", () => {
-    console.log("box was clicked");
     if (turnO) {
-      // playerO
       box.innerText = "O";
       turnO = false;
     } else {
-      // playerX
       box.innerText = "X";
       turnO = true;
     }
@@ -64,7 +61,6 @@ const showWinner = (winner) => {
 };
 
 const showDraw = () => {
-  // 🔥 NEW function
   msg.innerHTML = `It's a Draw! No winner this time.`;
   megContainer.classList.remove("hide");
 };
@@ -77,12 +73,10 @@ const checkWinner = () => {
 
     if (posVal1 != "" && posVal2 != "" && posVal3 != "") {
       if (posVal1 === posVal2 && posVal2 === posVal3) {
-        console.log("Winner", posVal1);
         showWinner(posVal1);
       }
     }
   }
-  // 🔥 DRAW CONDITION — after checking all patterns
   if (count === 9) {
     showDraw();
   }
